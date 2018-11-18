@@ -1,6 +1,20 @@
 import { combineReducers } from 'redux';
 
-const seletctedTaskReducer = (selectedTask = null, action) => {
+// const tasks = [
+//     { name: 'task 1', details: 'This is task 1.' },
+//     { name: 'task 2', details: 'This is task 2.' },
+//     { name: 'task 3', details: 'This is task 3.'},
+// ];
+
+const tasksReducer = () => {
+    return [
+        { name: 'task 1', details: 'This is task 1.' },
+        { name: 'task 2', details: 'This is task 2.' },
+        { name: 'task 3', details: 'This is task 3.'},
+    ];
+};
+
+const selectedTaskReducer = (selectedTask = null, action) => {
     if (action.type === 'TASK_SELECTED') {
         return action.payload;
     }
@@ -8,5 +22,6 @@ const seletctedTaskReducer = (selectedTask = null, action) => {
 }
 
 export default combineReducers({
-    selectedTask: seletctedTaskReducer,
+    tasks: tasksReducer,
+    selectedTask: selectedTaskReducer,
 });
