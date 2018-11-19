@@ -4,10 +4,15 @@ import { selectTask } from '../actions';
 
 class Module extends React.Component {
     renderList() {
+        var divStyle = {
+            padding: '10px',
+            border: 'groove'
+        };
         return this.props.tasks.map((task) => {
             return (
-                <div key={task.name}>
+                <div key={task.name} className = "ui buttons">
                     <button
+                        className="ui button"
                         onClick={() => this.props.selectTask(task)}
                     >
                         <h3>
@@ -25,7 +30,9 @@ class Module extends React.Component {
     render() {
         return (
             <div>
+                <p>-------------------Module-------------------</p>
                 {this.renderList()}
+                <p>--------------------------------------------</p>
             </div>
         );
     }
