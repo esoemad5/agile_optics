@@ -44,7 +44,7 @@ class Module extends React.Component {
 
             return output;
         };
-        return this.props.tasks.map((task) => {
+        return this.props.module.tasks.map((task) => {
             return (
                 <div key={task.name} className = "ui buttons">
                     <button
@@ -64,7 +64,7 @@ class Module extends React.Component {
     render() {
         return (
             <div className="ui raised very padded text container segment">
-                <h2 className="ui segment center aligned">Get Ores</h2>
+                <h2 className="ui segment center aligned">{this.props.module.name}</h2>
                 <div>
                     {this.renderList()}
                 </div>
@@ -77,7 +77,7 @@ const mapStateToProps = (state) => {
     return { tasks: state.projectState.tasks };
 };
 
-export default connect(mapStateToProps, {
+export default connect(null, {
     //selectTask: selectTask
     selectTask,
 })(Module);
