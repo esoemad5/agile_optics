@@ -5,9 +5,19 @@ import { selectTask } from '../actions';
 class Module extends React.Component {
 
     renderList() {
-        const divStyle = {
-            margin: '1px',
-            border: '1mm ridge black'
+        const getStyle = (task) => {
+            if (task === this.props.selectedTask) {
+                return ({
+                    margin: '1px',
+                    border: '1mm ridge red',
+                    width: '100px'
+                });
+            }
+            return ({
+                margin: '1px',
+                border: '1mm ridge black',
+                width: '100px'
+            });
         };
         const getColor = (status) => {
             var output = "ui button ";
@@ -27,6 +37,9 @@ class Module extends React.Component {
                 case "Completed":
                     output += "green";
                     break;
+                default:
+                    output += "black"
+                    break;
             }
 
             return output;
@@ -37,14 +50,11 @@ class Module extends React.Component {
                     <button
                         className={getColor(task.status)}
                         onClick={() => this.props.selectTask(task)}
-                        style={divStyle}
+                        style={getStyle(task)}
                     >
                         <h3>
                             {task.name}
                         </h3>
-                        <p>
-                            Some text
-                        </p>
                     </button>
                 </div>
             );
@@ -53,12 +63,11 @@ class Module extends React.Component {
 
     render() {
         return (
-            <div>
-                <p>-------------------Module-------------------</p>
-                <div style={{border: 'inset'}}>
+            <div className="ui raised very padded text container segment">
+                <h2 className="ui segment center aligned">Get Ores</h2>
+                <div>
                     {this.renderList()}
                 </div>
-                <p>--------------------------------------------</p>
             </div>
         );
     }

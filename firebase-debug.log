@@ -1,0 +1,69 @@
+[debug] [2018-11-19T22:00:33.675Z] ----------------------------------------------------------------------
+[debug] [2018-11-19T22:00:33.678Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\eriyg\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2018-11-19T22:00:33.678Z] CLI Version:   6.1.0
+[debug] [2018-11-19T22:00:33.678Z] Platform:      win32
+[debug] [2018-11-19T22:00:33.679Z] Node Version:  v11.2.0
+[debug] [2018-11-19T22:00:33.682Z] Time:          Mon Nov 19 2018 16:00:33 GMT-0600 (Central Standard Time)
+[debug] [2018-11-19T22:00:33.682Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-11-19T22:00:33.699Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-19T22:00:33.700Z] > authorizing via signed-in user
+[debug] [2018-11-19T22:00:33.700Z] [iam] checking project agileoptics-72882 for permissions ["firebase.projects.get"]
+[debug] [2018-11-19T22:00:33.703Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/agileoptics-72882:testIamPermissions  
+
+[debug] [2018-11-19T22:00:33.907Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-19T22:00:33.910Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/agileoptics-72882  
+ 
+[debug] [2018-11-19T22:00:34.065Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\eriyg\Desktop\devCodeCamp\Capstone\agile_optics'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-11-19T22:00:35.098Z] Fetching environment
+[info] +  database: started on http://localhost:9000
+[info] +  firestore: started on http://localhost:8080
+[debug] [2018-11-19T22:00:35.118Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/641538800123:getServerAppConfig  
+ 
+[debug] [2018-11-19T22:00:35.119Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/641538800123/clients/_:getWebAppConfig  
+ 
+[debug] [2018-11-19T22:00:35.244Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-19T22:00:35.244Z] Starting @google-cloud/functions-emulator
+[debug] [2018-11-19T22:00:35.408Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: build
+[info] +  hosting: Local server: http://localhost:5000
+[warn] !  database: WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by io.netty.util.internal.ReflectionUtil (file:/C:/Users/eriyg/.cache/firebase/emulators/firebase-database-emulator-v3.5.0.jar) to field sun.nio.ch.SelectorImpl.selectedKeys
+WARNING: Please consider reporting this to the maintainers of io.netty.util.internal.ReflectionUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[warn] !  database: 
+
+[warn] !  firestore: WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.google.protobuf.UnsafeUtil (file:/C:/Users/eriyg/.cache/firebase/emulators/cloud-firestore-emulator-v1.2.1.jar) to field java.nio.Buffer.address
+WARNING: Please consider reporting this to the maintainers of com.google.protobuf.UnsafeUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[warn] !  firestore: 
+
+[warn] !  firestore: Nov 19, 2018 4:00:36 PM io.gapi.emulators.netty.NettyUtil applyJava7LongHostnameWorkaround
+INFO: Unable to apply Java 7 long hostname workaround.
+
+[debug] [2018-11-19T22:00:38.827Z] Parsing function triggers
+[info] i  functions: No HTTPS functions found. Use firebase functions:shell if you would like to emulate other types of functions.
+[warn] !  firestore: Nov 19, 2018 4:01:52 PM io.gapi.emulators.grpc.GrpcServer$3 operationComplete
+INFO: Adding handler(s) to newly registered Channel.
+
+[warn] !  firestore: Nov 19, 2018 4:01:52 PM io.gapi.emulators.grpc.GrpcServer$3 operationComplete
+INFO: Adding handler(s) to newly registered Channel.
+
+[warn] !  firestore: Nov 19, 2018 4:01:52 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+
+[warn] !  firestore: Nov 19, 2018 4:01:53 PM io.gapi.emulators.grpc.GrpcServer$3 operationComplete
+INFO: Adding handler(s) to newly registered Channel.
+
+[warn] !  firestore: Nov 19, 2018 4:01:53 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /favicon.ico
+
+[error] 
+[error] Error: firestore: emulator has exited with code: 3221225786

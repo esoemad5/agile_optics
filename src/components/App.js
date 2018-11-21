@@ -5,8 +5,7 @@ import TaskDetails from './TaskDetails'
 const App = () => {
     return (
         <div>
-            <Module />
-            <Module />
+            <Module  />
             <TaskDetails />
         </div>
     );

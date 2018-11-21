@@ -3,11 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "firebase": "^5.5.8",
+    "node": "^9.10.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^5.1.1",
+    "react-redux-firebase": "^2.2.2",
     "react-scripts": "2.1.1",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "redux-firestore": "^0.6.0",
+    "redux-thunk": "^2.3.0",
+    "thunk": "0.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,5 +29,18 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esoemad5/agile_optics.git"
+  },
+  "author": "Elliott Soemadi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/esoemad5/agile_optics/issues"
+  },
+  "homepage": "https://github.com/esoemad5/agile_optics#readme"
 }
