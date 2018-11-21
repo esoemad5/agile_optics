@@ -74,7 +74,7 @@ class Module extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return { tasks: state.initialState.tasks };
+    return { tasks: state.projectState.tasks };
 };
 
 export default connect(mapStateToProps, {

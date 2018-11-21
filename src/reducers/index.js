@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const initialState = {
+const projectState = {
     tasks: [
         {
             name: 'Get pickaxe',
@@ -23,8 +23,8 @@ const initialState = {
     ]
 };
 
-const initialStateReducer = () => {
-    return initialState;
+const projectStateReducer = () => {
+    return projectState;
 };
 
 const selectedTaskReducer = (selectedTask = null, action) => {
@@ -35,6 +35,6 @@ const selectedTaskReducer = (selectedTask = null, action) => {
 }
 
 export default combineReducers({
-    initialState: initialStateReducer,
+    projectState: projectStateReducer,
     selectedTask: selectedTaskReducer,
 });

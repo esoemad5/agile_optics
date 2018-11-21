@@ -16,3 +16,5 @@ const TaskSummary = () => {
         </button>
     );
 }
+
+export default TaskSummary;
