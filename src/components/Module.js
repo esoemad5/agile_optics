@@ -10,13 +10,15 @@ class Module extends React.Component {
                 return ({
                     margin: '1px',
                     border: '1mm ridge red',
-                    width: '100px'
+                    width: '150px',
+                    height: '75px'
                 });
             }
             return ({
                 margin: '1px',
                 border: '1mm ridge black',
-                width: '100px'
+                width: '150px',
+                height: '75px'
             });
         };
         const getColor = (status) => {
@@ -46,7 +48,7 @@ class Module extends React.Component {
         };
         return this.props.module.tasks.map((task) => {
             return (
-                <div key={task.name} className = "ui buttons">
+                <div key={task.name} className = "">
                     <button
                         className={getColor(task.status)}
                         onClick={() => this.props.selectTask(task)}
@@ -73,9 +75,6 @@ class Module extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return { tasks: state.projectState.tasks };
-};
 
 export default connect(null, {
     //selectTask: selectTask

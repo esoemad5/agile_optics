@@ -1,6 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
+
 import Module from './Module'
+//import reducers from '../reducers'
 
 class Project extends React.Component{
     render() {
@@ -17,8 +21,14 @@ class Project extends React.Component{
     }
 }
 
-const mapStateToProps = (state) =>{
+const mapStateToProps = (state) => {
+    console.log(state);
     return state.projectState
 }
 
-export default connect(mapStateToProps)(Project);
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        { collection: 'Projects' }
+    ])
+)(Project);

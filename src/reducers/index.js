@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { firestoreReducer } from 'redux-firestore';
 
 const projectState = {
     name: "Create Bronze Wire",
@@ -61,8 +62,12 @@ const projectState = {
     
 };
 
-const projectStateReducer = () => {
-    return projectState;
+const projectStateReducer = (state = projectState, action) => {
+    if (action.type) {
+        //console.log(action.type);
+    }
+    return state
+    
 };
 
 const selectedTaskReducer = (selectedTask = null, action) => {
@@ -75,4 +80,5 @@ const selectedTaskReducer = (selectedTask = null, action) => {
 export default combineReducers({
     projectState: projectStateReducer,
     selectedTask: selectedTaskReducer,
+    firestore: firestoreReducer
 });
