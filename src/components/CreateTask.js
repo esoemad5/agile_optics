@@ -21,7 +21,7 @@ class CreateTask extends React.Component{
 
     render() {
         return (
-            <div className="ui raised very padded text container segment">
+            <div className="ui raised very padded text container segment fluid">
                 <form onSubmit={this.handleSubmit}>
                     <button
                         className="ui button"

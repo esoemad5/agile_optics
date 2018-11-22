@@ -17,7 +17,7 @@ const Module =(props)=> {
     
     //console.log(this.props);
     return (
-        <div className="ui raised very padded text container segment">
+        <div className="ui raised very padded text container segment fluid">
             <h2 className="ui segment center aligned">{props.module.name}</h2>
             <div>
                 {renderList(props)}

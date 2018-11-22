@@ -15,6 +15,7 @@ const projectState = {
                     status: 'In Progress',
                     priority: 'High',
                     comments: [],
+                    teamMembers: [],
                 },
                 {
                     id: 1,
@@ -23,6 +24,7 @@ const projectState = {
                     status: 'Not Started',
                     priority: 'Low',
                     comments: [],
+                    teamMembers: [],
                 },
                 {
                     id: 2,
@@ -31,6 +33,7 @@ const projectState = {
                     status: 'Not Started',
                     priority: 'High',
                     comments: [{author: "Default User", comment: "There are a lot of bots on copper right now.", datePosted: "Jun 29th 2018 12:02 AM"}],
+                    teamMembers: [],
                 },
             ]
         },
@@ -45,6 +48,7 @@ const projectState = {
                     status: 'In Progress',
                     priority: 'High',
                     comments: [],
+                    teamMembers: [],
                 },
                 {
                     id: 1,
@@ -53,6 +57,7 @@ const projectState = {
                     status: 'Not Started',
                     priority: 'Low',
                     comments: [],
+                    teamMembers: [],
                 },
                 {
                     id: 2,
@@ -61,6 +66,7 @@ const projectState = {
                     status: 'Not Started',
                     priority: 'High',
                     comments: [],
+                    teamMembers: [],
                 },
             ]
         }
