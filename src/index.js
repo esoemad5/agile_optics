@@ -11,13 +11,17 @@ import App from './components/App';
 import reducers from './reducers';
 
 ReactDOM.render(
-    <Provider store={createStore(reducers,
-        compose(
-            applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-            reduxFirestore(firebaseConfig),
-            reactReduxFirebase(firebaseConfig)
-        )
-        )}
+    <Provider 
+        store={
+            createStore(
+                reducers,
+                compose(
+                    applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
+                    reduxFirestore(firebaseConfig),
+                    reactReduxFirebase(firebaseConfig)
+                )
+            )
+        }
     >
         <App />
     </Provider>,

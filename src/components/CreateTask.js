@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
+import { createTaskOnModule } from '../actions/index';
 class CreateTask extends React.Component{
     state = {
         name: '',
@@ -11,7 +12,10 @@ class CreateTask extends React.Component{
     handleSubmit = (e) => {
         e.preventDefault();
         console.clear();
-        console.log(this.state);
+        // console.log(this.state);
+        // console.log(this.props);
+        // console.log(this.props.moduleId);
+        this.props.createTaskOnModule(this.state, this.props.moduleId);
     }
     handleChange = (e) => {
         this.setState({
@@ -24,8 +28,7 @@ class CreateTask extends React.Component{
             <div className="ui raised very padded text container segment fluid">
                 <form onSubmit={this.handleSubmit}>
                     <button
-                        className="ui button"
-                        onClick={this.handleSubmit}>
+                        className="ui button">
                         Submit
                 </button>
                     <h1 className="ui segment center aligned">
@@ -64,4 +67,10 @@ class CreateTask extends React.Component{
     }
 }
 
-export default CreateTask;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createTaskOnModule: (project, moduleId) => dispatch(createTaskOnModule(project, moduleId))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CreateTask);

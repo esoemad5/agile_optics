@@ -44,6 +44,8 @@ const TaskSummary = ({ task, selectTask }) => {
 
         return output;
     };
+
+    console.log("TaskSummary rendered");
     return (
         <button
             className={getColor(task.status)}

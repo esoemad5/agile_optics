@@ -9,7 +9,9 @@ import TaskDetails from './TaskDetails'
 //import reducers from '../reducers'
 
 class Project extends React.Component{
+    
     render() {
+        console.log("Project rendered", this.props);
         //console.log(this.props);
         return (
             <div>

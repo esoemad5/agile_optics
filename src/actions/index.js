@@ -5,12 +5,22 @@ export const selectTask = (task) => {
     };
 };
 
+export const createTaskOnModule = (task, moduleId) => {
+    return (dispatch, getState) => {
+        // make async call to database
+        dispatch({
+            type: 'CREATE_TASK_ON_MODULE',
+            payload: {task: task, moduleId: moduleId}
+        })
+    }
+}
+
 export const testActionCreator = (parameter) => {
     return (dispatch, getState, {getFirebase, getFirestore}) => {
         // make async call to database
         const firestore = getFirestore();
-        firestore.collection('Projects').
-        dispatch({ type: 'SOME_TYPE', payload: parameter });
+        firestore.collection('Projects')
+        .dispatch({ type: 'SOME_TYPE', payload: parameter });
     }
 }
 

@@ -75,10 +75,10 @@ const projectState = {
 };
 
 const projectStateReducer = (state = projectState, action) => {
-    if (action.type) {
-        //console.log(action.type);
+    console.log('projectStateReducer invoked');
+    if (action.type === 'CREATE_TASK_ON_MODULE') {
+        console.log('created task', action.payload);
     }
-    console.log('projectStateReducer');
     return state
     
 };
@@ -98,6 +98,8 @@ const updateTaskReducer = (task = null, action) => {
 
     return task;
 }
+
+
 
 export default combineReducers({
     projectState: projectStateReducer,

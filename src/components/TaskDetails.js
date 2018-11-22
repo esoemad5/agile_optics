@@ -25,6 +25,7 @@ class TaskDetails extends React.Component {
 
     
     render() {
+        console.log("TaskDetails rendered");
         const selectedTask = this.props.selectedTask;
         if (!selectedTask) {
             return (

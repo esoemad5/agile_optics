@@ -15,6 +15,7 @@ class UpdateTask extends React.Component{
         })
     }
     render() {
+        console.log("UpdateTask rendered");
         return (
             <div className="container">
                 <form onSubmit={this.handleSubmit}>
