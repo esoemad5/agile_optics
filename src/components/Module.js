@@ -1,5 +1,6 @@
 import React from 'react';
 import TaskSummary from './TaskSummary';
+import CreateTask from './CreateTask';
 
 const renderList = (props) => {
     return props.module.tasks.map((task) => {
@@ -21,6 +22,7 @@ const Module =(props)=> {
             <div>
                 {renderList(props)}
             </div>
+            <CreateTask />
         </div>
     );
 }
