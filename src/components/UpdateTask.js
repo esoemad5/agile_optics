@@ -23,12 +23,27 @@ class UpdateTask extends React.Component{
                     <button className="ui button" onClick={this.handleSubmit}>Submit</button>
                     <h1 className="ui segment center aligned"><input type='text' id='name' value={this.props.task.name} onChange={this.handleChange} /></h1>
                     <i><b>
-                        Status: <input type='text' id='status' value={this.props.task.status} onChange={this.handleChange} />
+                        Status: <input
+                            type='text'
+                            id='status'
+                            value={this.props.task.status}
+                            onChange={this.handleChange}
+                        />
                         <br />
-                        Priority: <input type='text' id='priority' value={this.props.task.priority} onChange={this.handleChange} />
+                        Priority: <input
+                            type='text'
+                            id='priority'
+                            value={this.props.task.priority}
+                            onChange={this.handleChange}
+                        />
                     </b></i>
                     <br />
-                    <textarea type='text' id='details' value={this.props.task.details} onChange={this.handleChange} />
+                    <textarea
+                        type='text'
+                        id='details'
+                        value={this.props.task.details}
+                        onChange={this.handleChange}
+                    />
                 </form>
             </div>
         );
