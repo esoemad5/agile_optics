@@ -14,6 +14,7 @@ const projectState = {
                     details: 'Pickaxes can be purchased from other players at the Grand Exchange. A free bronze pickaxe can be obtained from the mining tutor.',
                     status: 'In Progress',
                     priority: 'High',
+                    comments: [],
                 },
                 {
                     id: 1,
@@ -21,13 +22,15 @@ const projectState = {
                     details: 'Prospect rocks until tin ore is found, then use the pickaxe to mine it.',
                     status: 'Not Started',
                     priority: 'Low',
+                    comments: [],
                 },
                 {
                     id: 2,
                     name: 'Get copper',
-                    details: 'Prospect rocks until copper ore is found, then use the pickaxe to mine it. There are a lot of bots on copper right now.',
+                    details: 'Prospect rocks until copper ore is found, then use the pickaxe to mine it.',
                     status: 'Not Started',
                     priority: 'High',
+                    comments: [{author: "Default User", comment: "There are a lot of bots on copper right now.", datePosted: "Jun 29th 2018 12:02 AM"}],
                 },
             ]
         },
@@ -41,6 +44,7 @@ const projectState = {
                     details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim',
                     status: 'In Progress',
                     priority: 'High',
+                    comments: [],
                 },
                 {
                     id: 1,
@@ -48,6 +52,7 @@ const projectState = {
                     details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
                     status: 'Not Started',
                     priority: 'Low',
+                    comments: [],
                 },
                 {
                     id: 2,
@@ -55,6 +60,7 @@ const projectState = {
                     details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                     status: 'Not Started',
                     priority: 'High',
+                    comments: [],
                 },
             ]
         }
@@ -66,19 +72,30 @@ const projectStateReducer = (state = projectState, action) => {
     if (action.type) {
         //console.log(action.type);
     }
+    console.log('projectStateReducer');
     return state
     
 };
 
 const selectedTaskReducer = (selectedTask = null, action) => {
     if (action.type === 'TASK_SELECTED') {
+        console.log('selectedTaskReducer');
         return action.payload;
     }
     return selectedTask;
 }
 
+const updateTaskReducer = (task = null, action) => {
+    if (action.type === 'UPDATE_TASK') {
+        // Logic
+    }
+
+    return task;
+}
+
 export default combineReducers({
     projectState: projectStateReducer,
     selectedTask: selectedTaskReducer,
+    updateTask: updateTaskReducer,
     firestore: firestoreReducer
 });

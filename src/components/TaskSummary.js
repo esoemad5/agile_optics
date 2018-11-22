@@ -1,16 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { selectTask } from '../actions';
 
-const TaskSummary = (props) => {
-    console.log(props);
-    const getStyle = (task) => {
-        if (task === props.selectedTask) {
-            return ({
-                margin: '1px',
-                border: '1mm ridge red',
-                width: '150px',
-                height: '75px'
-            });
-        }
+const TaskSummary = ({ task, selectTask }) => {
+    const getStyle = (/* task */) => {
+        // if (task === props.selectedTask) {
+        //     return ({
+        //         margin: '1px',
+        //         border: '1mm ridge red',
+        //         width: '150px',
+        //         height: '75px'
+        //     });
+        // }
         return ({
             margin: '1px',
             border: '1mm ridge black',
@@ -45,15 +46,20 @@ const TaskSummary = (props) => {
     };
     return (
         <button
-            className={getColor(props.task.status)}
-            onClick={() => props.selectTask(props.task)}
-            style={getStyle(props.task)}
+            className={getColor(task.status)}
+            onClick={() => selectTask(task)}
+            style={getStyle(task)}
         >
             <h3>
-                {props.task.name}
+                {task.name}
             </h3>
         </button>
     );
 }
 
-export default TaskSummary;
+
+export default connect(null, {
+    //selectTask: selectTask
+    selectTask,
+})(TaskSummary);
+// export default TaskSummary;
