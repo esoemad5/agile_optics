@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const TaskDetails = ({selectedTask}) => {
-    if(!selectedTask){
+    if (!selectedTask) {
         return (
             <div className="ui raised very padded text container segment">
                 <div>Select a task</div>
             </div>
         );
     }
+    ;
     return (
         <div className="ui raised very padded text container segment">
             <h1 className="ui segment center aligned">{selectedTask.name}</h1>

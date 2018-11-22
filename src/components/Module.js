@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { selectTask } from '../actions';
+import TaskSummary from './TaskSummary';
 
 class Module extends React.Component {
 
@@ -48,16 +49,8 @@ class Module extends React.Component {
         };
         return this.props.module.tasks.map((task) => {
             return (
-                <div key={task.name} className = "">
-                    <button
-                        className={getColor(task.status)}
-                        onClick={() => this.props.selectTask(task)}
-                        style={getStyle(task)}
-                    >
-                        <h3>
-                            {task.name}
-                        </h3>
-                    </button>
+                <div key={task.name} className = "ui buttons">
+                    <TaskSummary task={task} selectTask={this.props.selectTask}/>
                 </div>
             );
         });
