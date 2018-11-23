@@ -6,13 +6,25 @@ export const selectTask = (task) => {
 };
 
 export const createTaskOnModule = (task, moduleId) => {
-    return (dispatch, getState) => {
+    return (dispatch, getState, {getFirebase, getFirestore}) => {
         // make async call to database
-        dispatch({
-            type: 'CREATE_TASK_ON_MODULE',
-            payload: {task: task, moduleId: moduleId}
-        })
-    }
+        const firestore = getFirestore(); // this is a refference to the database
+        firestore.collection('Tasks')
+        .add( { ...task, moduleId: moduleId } )
+        .then(() => {
+                dispatch(
+                    {
+                    type: 'CREATE_TASK_ON_MODULE',
+                        payload: { task: task, moduleId: moduleId }
+                    }
+                )
+            }
+        )
+        .catch((error) => {
+            dispatch({ type: 'CREATE_TASK_ON_MODULE_ERROR', error });
+            }
+        )
+    }  
 }
 
 export const testActionCreator = (parameter) => {

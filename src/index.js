@@ -16,7 +16,9 @@ ReactDOM.render(
             createStore(
                 reducers,
                 compose(
-                    applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
+                    applyMiddleware(
+                        thunk.withExtraArgument({ getFirebase, getFirestore })
+                    ),
                     reduxFirestore(firebaseConfig),
                     reactReduxFirebase(firebaseConfig)
                 )

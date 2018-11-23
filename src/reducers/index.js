@@ -76,8 +76,15 @@ const projectState = {
 
 const projectStateReducer = (state = projectState, action) => {
     console.log('projectStateReducer invoked');
-    if (action.type === 'CREATE_TASK_ON_MODULE') {
-        console.log('created task', action.payload);
+    switch (action.type) {
+        case 'CREATE_TASK_ON_MODULE':
+            console.log('created task', action.payload);
+            return state;
+        case 'CREATE_TASK_ON_MODULE_ERROR':
+            console.log('projectStateReducer has recieved an action of type CREATE_TASK_ON_MODULE_ERROR', action.error);
+            return state
+        default:
+            return state;
     }
     return state
     
