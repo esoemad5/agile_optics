@@ -9,7 +9,9 @@ import TaskDetails from './TaskDetails'
 //import reducers from '../reducers'
 
 class Project extends React.Component{
-    
+    componentDidUpdate() {
+        console.log("Component updated:", this.props);
+    }
     render() {
         console.log("Project rendered", this.props);
         //console.log(this.props);
@@ -31,14 +33,17 @@ class Project extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    //console.log(state);
+    console.log("Project component state: ",state);
     //console.log(state.projectState);
-    return state.projectState
+    //return state.projectState
+    return {
+        modules: state.firestore.ordered.Modules
+    }
 }
 
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        { collection: 'Projects' }
+        { collection: 'Modules' },
     ])
 )(Project);

@@ -86,8 +86,6 @@ const projectStateReducer = (state = projectState, action) => {
         default:
             return state;
     }
-    return state
-    
 };
 
 const selectedTaskReducer = (selectedTask = null, action) => {
