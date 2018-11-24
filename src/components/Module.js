@@ -8,7 +8,6 @@ import CreateTask from './CreateTask';
 import { sorting } from '../utilities/helperFunctions';
 
 const renderTasks = (moduleProps) => {
-    console.log("renderTasks", moduleProps);
     if (!moduleProps.Tasks) { // check for no modules in database
         return;
     }
@@ -22,16 +21,14 @@ const renderTasks = (moduleProps) => {
         return false;
     });
 
-    console.log("Module.renderTasks", tasks);
-
-    tasks = sorting(tasks, "priority");
+    console.log("Module.renderTasks before sort", tasks);
+    tasks = sorting(tasks, "status");
 
     console.log("Module.renderTasks after sort", tasks);
 
     return (
         <div>
             {tasks.map(task => {
-                console.log("task Map", task)
                 return (
                     <TaskSummary task={task} key={task.id} />
                 )

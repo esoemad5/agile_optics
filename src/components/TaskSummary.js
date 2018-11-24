@@ -19,22 +19,25 @@ const TaskSummary = ({task}) => {
             height: '75px'
         });
     };
+    /*
+    * 0: Stuck; 1: In Progress; 2: Awaiting Review; 3: Not Started; 4: Completed
+    */
     const getColor = (status) => {
         var output = "ui button ";
         switch (status) {
-            case "Not Started":
-                output += "grey";
-                break;
-            case "In Progress":
-                output += "yellow";
-                break;
-            case "Stuck":
+            case 0:
                 output += "red";
                 break;
-            case "Awaiting Review":
+            case 1:
+                output += "yellow";
+                break;
+            case 2:
                 output += "blue";
                 break;
-            case "Completed":
+            case 3:
+                output += "grey";
+                break;
+            case 4:
                 output += "green";
                 break;
             default:

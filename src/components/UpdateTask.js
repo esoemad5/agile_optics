@@ -1,5 +1,9 @@
 import React from 'react';
 
+/*
+ * 0: Stuck; 1: In Progress; 2: Awaiting Review; 3: Not Started; 4: Completed
+ */
+
 class UpdateTask extends React.Component{
     state = {
         ...this.props.task
