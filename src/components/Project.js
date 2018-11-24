@@ -9,7 +9,7 @@ import TaskDetails from './TaskDetails'
 //import reducers from '../reducers'
 
 
-function renderModules(projectProps) {
+const renderModules = (projectProps) => {
     if (!projectProps.Modules) { // check for no modules in database
         return;
     }
