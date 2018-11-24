@@ -21,10 +21,7 @@ const renderTasks = (moduleProps) => {
         return false;
     });
 
-    console.log("Module.renderTasks before sort", tasks);
     tasks = sorting(tasks, "status");
-
-    console.log("Module.renderTasks after sort", tasks);
 
     return (
         <div>

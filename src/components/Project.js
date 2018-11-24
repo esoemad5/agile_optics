@@ -5,7 +5,7 @@ import { compose } from 'redux';
 
 import Module from './Module'
 
-import TaskDetails from './TaskDetails'
+// import TaskDetails from './TaskDetails'
 //import reducers from '../reducers'
 
 
@@ -45,9 +45,6 @@ const Project = (props) => {
                 <h2 className="ui segment center aligned">{props.name}</h2>
                 {renderModules(props)}
             </div>
-        
-            <TaskDetails />
-            <br/><br/>
         </div>
     )
 }

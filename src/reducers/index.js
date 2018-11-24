@@ -1,6 +1,45 @@
 import { combineReducers } from 'redux';
 import { firestoreReducer } from 'redux-firestore';
 
+const projectStateReducer = (state = null, action) => {
+    switch (action.type) {
+        case 'CREATE_TASK_ON_MODULE':
+            return state;
+        case 'CREATE_TASK_ON_MODULE_ERROR':
+            console.log('projectStateReducer has recieved an action of type CREATE_TASK_ON_MODULE_ERROR', action.error);
+            return state
+        default:
+            return state;
+    }
+};
+
+const selectedTaskReducer = (selectedTask = null, action) => {
+    //console.log('selectedTaskReducer invoked', action);
+    if (action.type === 'TASK_SELECTED') {
+        console.log('selectedTaskReducer inside if', action);
+        return action.payload;
+    }
+    return selectedTask;
+}
+
+const updateTaskReducer = (task = null, action) => {
+    if (action.type === 'UPDATE_TASK') {
+        // Logic
+    }
+
+    return task;
+}
+
+
+
+export default combineReducers({
+    projectState: projectStateReducer,
+    selectedTask: selectedTaskReducer,
+    updateTask: updateTaskReducer,
+    firestore: firestoreReducer
+});
+
+/* dummy data
 const _projectState = {
     name: "Create Bronze Wire",
     modules: [
@@ -73,44 +112,4 @@ const _projectState = {
     ]
     
 };
-
-const projectState = "ignore this variable";
-
-const projectStateReducer = (state = projectState, action) => {
-    switch (action.type) {
-        case 'CREATE_TASK_ON_MODULE':
-            return state;
-        case 'CREATE_TASK_ON_MODULE_ERROR':
-            console.log('projectStateReducer has recieved an action of type CREATE_TASK_ON_MODULE_ERROR', action.error);
-            return state
-        case 'remove this case ;alskdjflkjasjddf;lfasjd;lf':
-            return _projectState;
-        default:
-            return state;
-    }
-};
-
-const selectedTaskReducer = (selectedTask = null, action) => {
-    if (action.type === 'TASK_SELECTED') {
-        console.log('selectedTaskReducer');
-        return action.payload;
-    }
-    return selectedTask;
-}
-
-const updateTaskReducer = (task = null, action) => {
-    if (action.type === 'UPDATE_TASK') {
-        // Logic
-    }
-
-    return task;
-}
-
-
-
-export default combineReducers({
-    projectState: projectStateReducer,
-    selectedTask: selectedTaskReducer,
-    updateTask: updateTaskReducer,
-    firestore: firestoreReducer
-});
+*/

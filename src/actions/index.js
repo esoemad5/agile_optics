@@ -1,4 +1,5 @@
 export const selectTask = (task) => {
+    //console.log("actionCreators.selectTask", task);
     return {
         type: 'TASK_SELECTED',
         payload: task

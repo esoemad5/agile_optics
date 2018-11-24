@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { selectTask } from '../actions';
 
-const TaskSummary = ({task}) => {
+const TaskSummary = (props) => {
+    //console.log("taskSummary props", props);
     const getStyle = (/* task */) => {
         // if (task === props.selectedTask) {
         //     return ({
@@ -50,20 +51,20 @@ const TaskSummary = ({task}) => {
 
     return (
         <button
-            className={getColor(task.status)}
-            onClick={() => selectTask(task)}
-            style={getStyle(task)}
+            className={getColor(props.task.status)}
+            onClick={() => props.selectTask(props.task)}
+            style={getStyle(props.task)}
         >
             <h3>
-                {task.name}
+                {props.task.name}
             </h3>
         </button>
     );
 }
 
 
+
 export default connect(null, {
     //selectTask: selectTask
     selectTask,
 })(TaskSummary);
-// export default TaskSummary;
