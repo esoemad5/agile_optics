@@ -5,6 +5,7 @@ import { compose } from 'redux';
 
 import TaskSummary from './TaskSummary';
 import CreateTask from './CreateTask';
+import { sorting } from '../utilities/helperFunctions';
 
 const renderTasks = (moduleProps) => {
     console.log("renderTasks", moduleProps);
@@ -14,14 +15,18 @@ const renderTasks = (moduleProps) => {
 
     // Only use modules who belong to the current project.
     // A better database layout will remove the need for this code chunk.
-    const tasks = moduleProps.Tasks.filter((task) => {
+    var tasks = moduleProps.Tasks.filter((task) => {
         if (task.moduleId === moduleProps.module.id) {
             return true;
         }
         return false;
     });
 
-    //console.log("Module.renderTasks", tasks); // REMOVE THIS AT SOME POINT!!!
+    console.log("Module.renderTasks", tasks);
+
+    tasks = sorting(tasks, "priority");
+
+    console.log("Module.renderTasks after sort", tasks);
 
     return (
         <div>
