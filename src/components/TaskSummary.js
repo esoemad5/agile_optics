@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { selectTask } from '../actions';
 
-const TaskSummary = ({ task, selectTask }) => {
+const TaskSummary = ({task}) => {
     const getStyle = (/* task */) => {
         // if (task === props.selectedTask) {
         //     return ({

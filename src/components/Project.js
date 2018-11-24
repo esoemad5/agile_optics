@@ -9,6 +9,8 @@ import TaskDetails from './TaskDetails'
 //import reducers from '../reducers'
 
 
+// consider abstracting this method to be used elsewhere (Module.js)
+// low priority change
 const renderModules = (projectProps) => {
     if (!projectProps.Modules) { // check for no modules in database
         return;
@@ -16,13 +18,15 @@ const renderModules = (projectProps) => {
 
     // Only use modules who belong to the current project.
     // A better database layout will remove the need for this code chunk.
-    const modules = projectProps.Modules.filter((module) => { 
+    const modules = projectProps.Modules.filter((module) => {
         if (module.projectId === projectProps.projectIdInDatabase) {
             return true;
         }
         return false;
-    })
-    console.log(modules);
+    });
+
+    //console.log("Project.renderModules", modules); // REMOVE THIS AT SOME POINT!!!
+
     return (
         <div>
             {modules.map(module => {

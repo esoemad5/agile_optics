@@ -83,6 +83,8 @@ const projectStateReducer = (state = projectState, action) => {
         case 'CREATE_TASK_ON_MODULE_ERROR':
             console.log('projectStateReducer has recieved an action of type CREATE_TASK_ON_MODULE_ERROR', action.error);
             return state
+        case 'remove this case ;alskdjflkjasjddf;lfasjd;lf':
+            return _projectState;
         default:
             return state;
     }
