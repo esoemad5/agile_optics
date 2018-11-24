@@ -9,41 +9,58 @@ import TaskDetails from './TaskDetails'
 //import reducers from '../reducers'
 
 class Project extends React.Component{
-    componentDidUpdate() {
-        console.log("Component updated:", this.props);
+
+    renderModules() {
+        if (!this.props.Modules) { // check for no modules in database
+            return;
+        }
+
+        // Only use modules who belong to the current project.
+        // A better database layout will remove the need for this code chunk.
+        const modules = this.props.Modules.filter((module) => { 
+            if (module.projectId === this.props.projectIdInDatabase) {
+                return true;
+            }
+            return false;
+        })
+        console.log(modules);
+        return (
+            <div>
+                {modules.map(module => {
+                    return (
+                        <Module module={module} key={module.id} />
+                    )
+                })}
+            </div>
+        );
     }
+
     render() {
-        console.log("Project rendered", this.props);
-        //console.log(this.props);
         return (
             <div>
                 <div className="ui raised very padded text container segment">
                     <h2 className="ui segment center aligned">{this.props.name}</h2>
-                    {this.props.modules && this.props.modules.map(module => {
-                        return (
-                            <Module module={module} key={module.id} />
-                        )
-                    })}
+                    {this.renderModules()}
                 </div>
             
                 <TaskDetails />
+                <br/><br/>
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-    console.log("Project component state: ",state);
-    //console.log(state.projectState);
-    //return state.projectState
+    // return state.projectState // Uncomment this line to switch to dummy data.
     return {
-        modules: state.firestore.ordered.Modules
+        // .ordered makes Modules an array; .data makes Modules a JSON object. The array has the module's id in it (extremely useful!)
+        Modules: state.firestore.ordered.Modules,
     }
 }
 
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        { collection: 'Modules' },
+        {collection: 'Modules'},
     ])
 )(Project);

@@ -1,12 +1,33 @@
 import React from 'react';
 import Project from './Project'
 
-const App = () => {
+import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
+
+
+const App = (props) => {
+    //console.log("App props:",props);
     return (
         <div>
-            <Project />
+            <br />
+            {props.projects && props.projects.map(project => {
+                return <Project key={project.id} projectIdInDatabase={project.id} name={project.name}/>
+            })}
         </div>
     );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    //return state.projectState // Uncomment this line to switch to dummy data.
+    return {
+        projects: state.firestore.ordered.Projects,
+    }
+}
+
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        {collection: 'Projects'},
+    ])
+)(App);

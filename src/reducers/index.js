@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { firestoreReducer } from 'redux-firestore';
 
-const projectState = {
+const _projectState = {
     name: "Create Bronze Wire",
     modules: [
         {
@@ -74,11 +74,11 @@ const projectState = {
     
 };
 
+const projectState = "ignore this variable";
+
 const projectStateReducer = (state = projectState, action) => {
-    console.log('projectStateReducer invoked');
     switch (action.type) {
         case 'CREATE_TASK_ON_MODULE':
-            console.log('created task', action.payload);
             return state;
         case 'CREATE_TASK_ON_MODULE_ERROR':
             console.log('projectStateReducer has recieved an action of type CREATE_TASK_ON_MODULE_ERROR', action.error);

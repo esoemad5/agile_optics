@@ -7,7 +7,7 @@ const renderList = (props) => {
         <div>
             { props.module.tasks && props.module.tasks.map((task) => {
                 return (
-                    <div key={task.name} className = "ui buttons">
+                    <div key={task.id} className = "ui buttons">
                         <TaskSummary task={task} />
                     </div>
                 );
@@ -18,7 +18,6 @@ const renderList = (props) => {
 
 const Module =(props)=> {
 
-    console.log("Module rendered", props);
     return (
         <div className="ui raised very padded text container segment fluid">
             <h2 className="ui segment center aligned">{props.module.name}</h2>

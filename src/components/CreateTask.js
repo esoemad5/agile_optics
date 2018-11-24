@@ -26,10 +26,10 @@ class CreateTask extends React.Component{
     render() {
         return (
             <div className="ui raised very padded text container segment fluid">
-                <div class="ui grid">
-                    <div class="five wide column"></div>
-                    <div class="eight wide column"><h3>Create New Task</h3></div>
-                    <div class="three wide column"></div>
+                <div className="ui grid">
+                    <div className="five wide column"></div>
+                    <div className="eight wide column"><h3>Create New Task</h3></div>
+                    <div className="three wide column"></div>
                 </div>
                 <br/>
                 <form onSubmit={this.handleSubmit}>
