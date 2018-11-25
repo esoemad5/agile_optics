@@ -25,11 +25,13 @@ const renderTasks = (moduleProps) => {
 
     return (
         <div>
-            {tasks.map(task => {
-                return (
-                    <TaskSummary task={task} key={task.id} />
-                )
-            })}
+            <center>
+                {tasks.map(task => {
+                    return (
+                        <TaskSummary task={task} key={task.id} />
+                    )
+                })}
+            </center>
         </div>
     );
 }

@@ -6,12 +6,7 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 
-import { selectTask } from '../actions';
-
-
 const App = (props) => {
-    
-    console.log("App props:",props);
     return (
         <div>
             <br />
@@ -25,7 +20,6 @@ const App = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log("App.mapStateToProps state", state);
     //return state.projectState // Uncomment this line to switch to dummy data.
     return {
         projects: state.firestore.ordered.Projects,

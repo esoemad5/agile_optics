@@ -11,10 +11,6 @@ class CreateTask extends React.Component{
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.clear();
-        // console.log(this.state);
-        // console.log(this.props);
-        // console.log(this.props.moduleId);
         this.props.createTaskOnModule(this.state, this.props.moduleId);
     }
     handleChange = (e) => {

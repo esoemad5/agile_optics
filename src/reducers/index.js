@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import { firestoreReducer } from 'redux-firestore';
 
-const projectStateReducer = (state = null, action) => {
+// This reducer may be obsolete.
+const createTaskOnModuleReducer = (state = null, action) => {
     switch (action.type) {
         case 'CREATE_TASK_ON_MODULE':
+            console.log("CreateTaskOnModule (state, action)", state, action);
             return state;
         case 'CREATE_TASK_ON_MODULE_ERROR':
             console.log('projectStateReducer has recieved an action of type CREATE_TASK_ON_MODULE_ERROR', action.error);
@@ -33,7 +35,7 @@ const updateTaskReducer = (task = null, action) => {
 
 
 export default combineReducers({
-    projectState: projectStateReducer,
+    projectState: createTaskOnModuleReducer,
     selectedTask: selectedTaskReducer,
     updateTask: updateTaskReducer,
     firestore: firestoreReducer

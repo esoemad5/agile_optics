@@ -15,8 +15,13 @@ class TaskDetails extends React.Component {
         const selectedTask = this.props.selectedTask;
         return (
             <div>
-                <button className="ui button" onClick={this.renderUpdateForm}>Edit</button>
                 <h1 className="ui segment center aligned">{selectedTask.name}</h1>
+                <div className="ui six column grid">
+                    <div className="left floated column"><button className="ui button allign-right">Join</button></div>
+                    <div className="right floated column"><button className="ui button" onClick={this.renderUpdateForm}>Edit</button></div>
+                </div>
+                
+                
                 <i><b>Status: {selectedTask.status}<br />Priority: {selectedTask.priority}</b></i>
                 <p>{selectedTask.details}</p>
             </div>
@@ -35,7 +40,6 @@ class TaskDetails extends React.Component {
         }
         return (
             <div className="ui raised very padded text container segment">
-                
                 {this.state.updateFormIsVisible ?
                     <UpdateTask task={this.props.selectedTask} /> :
                     this.renderDetails()
