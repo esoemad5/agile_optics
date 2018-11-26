@@ -22,17 +22,7 @@ class CreateTask extends React.Component{
     render() {
         return (
             <div className="ui raised very padded text container segment fluid">
-                <div className="ui grid">
-                    <div className="five wide column"></div>
-                    <div className="eight wide column"><h3>Create New Task</h3></div>
-                    <div className="three wide column"></div>
-                </div>
-                <br/>
                 <form onSubmit={this.handleSubmit}>
-                    <button
-                        className="ui button">
-                        Submit
-                </button>
                     <h1 className="ui segment center aligned">
                         <input
                             type='text'
@@ -63,6 +53,12 @@ class CreateTask extends React.Component{
                         value={this.state.details}
                         onChange={this.handleChange}
                     />
+                    <br /><br />
+                    <center>
+                        <button className="ui button">
+                            Submit
+                        </button>
+                    </center>
                 </form>
             </div>
         );

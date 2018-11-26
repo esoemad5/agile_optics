@@ -20,8 +20,11 @@ export default class CreateTaskAccordion extends Component {
     return (
       <Accordion>
         <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
+        <h2 className="ui segment center aligned">
           <Icon name='dropdown' />
           Create Task
+        </h2>
+          
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 0}>
             <CreateTask moduleId={this.props.moduleId}/>
