@@ -18,7 +18,7 @@ const createTaskOnModuleReducer = (state = null, action) => {
 const selectedTaskReducer = (selectedTask = null, action) => {
     //console.log('selectedTaskReducer invoked', action);
     if (action.type === 'TASK_SELECTED') {
-        console.log('selectedTaskReducer inside if', action);
+        //console.log('selectedTaskReducer inside if', action);
         return action.payload;
     }
     return selectedTask;

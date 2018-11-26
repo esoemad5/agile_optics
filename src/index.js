@@ -21,7 +21,7 @@ const store = createStore(
         reactReduxFirebase(firebaseConfig)
     )
 )
-console.log("index store", store);
+//console.log("index store", store);
 ReactDOM.render(
     <Provider store={store}>
         <div>
