@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import UpdateTask from './UpdateTask';
-import { Link } from 'react-router-dom'
 
 class TaskDetails extends React.Component {
     state = {
@@ -24,34 +23,38 @@ class TaskDetails extends React.Component {
     }
 
     renderUserThumbnails = () => {
-        var assignedUsersThumbnailArr = [];
-        this.props.Users.filter(user => {
+        //var assignedUsersThumbnailArr = [];
+        var assignedUsersThumbnailArr = this.props.Users.map(user => {
             if (user.assignedTaskIds.includes(this.props.selectedTask.id)) {
-                assignedUsersThumbnailArr.push({pic: user.thumbnailPic, id: user.id, name: user.name});
+                return({ pic: user.thumbnailPic, id: user.id, name: user.name });
             }
+            return null;
         });
-        
         return(
             <div>
                 {assignedUsersThumbnailArr.map(pic => {
+                    if (pic === null) {
+                        return null;
+                    }
                     return (
-                        <img src={pic.pic} key={pic.id} height="20px" title={pic.name}></img>
+                        <img src={pic.pic} key={pic.id} height="20px" title={pic.name} alt={pic.name}></img>
                     )
                 })}
             </div>
         )
+        
     }
 
     renderDetails = () => {
-        var assignedUsers = [];
-        if (this.props.Users) {
-            assignedUsers = this.props.Users.filter(user => {
-                if (user.assignedTaskIds.includes(this.props.selectedTask.id)) {
-                    return true;
-                }
-            });
-        }
-        console.log(assignedUsers);
+        // this ended up not being used. probably better to use it.
+        // if (this.props.Users) {
+        //     var assignedUsers = this.props.Users.filter(user => {
+        //         if (user.assignedTaskIds.includes(this.props.selectedTask.id)) {
+        //             return true;
+        //         }
+        //         return false;
+        //     });
+        // }
         const selectedTask = this.props.selectedTask;
         return (
             <div>
@@ -73,7 +76,7 @@ class TaskDetails extends React.Component {
     }
 
     render() {
-        console.log("TaskDetails state, props", this.state, this.props);
+        //console.log("TaskDetails state, props", this.state, this.props);
         const selectedTask = this.props.selectedTask;
         if (!selectedTask) {
             return (

@@ -6,6 +6,30 @@ export const selectTask = (task) => {
     };
 };
 
+export const updateTask = (task) => {
+    console.log("in actions.updateTask", task);
+    return ((dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+        console.log("Hellos");
+        console.log("hmmm", firestore.collection("Tasks"));
+        firestore.collection('Tasks').doc(task.id)
+            .update({
+            name: task.name,
+            status: task.status,
+            priority: task.priority,
+            details: task.details,
+            })
+            .then(() => {
+                console.log("updateTask has been run")
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+        
+
+    })
+}
+
 export const createTaskOnModule = (task, moduleId) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         

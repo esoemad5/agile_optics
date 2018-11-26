@@ -7,6 +7,13 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 
 const App = (props) => {
+    const x = 5;
+    if (x===6) {
+        return (
+            <div></div>
+            // Redirect fun
+        )
+    }
     return (
         <div>
             <br />

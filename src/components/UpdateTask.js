@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { updateTask } from '../actions/index';
 
 /*
  * 0: Stuck; 1: In Progress; 2: Awaiting Review; 3: Not Started; 4: Completed
@@ -10,9 +12,9 @@ class UpdateTask extends React.Component{
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.clear();
         this.props.callback();
         console.log(this.state);
+        updateTask(this.state);
     }
     handleChange = (e) => {
         this.setState({
@@ -20,7 +22,6 @@ class UpdateTask extends React.Component{
         })
     }
     render() {
-        console.log("UpdateTask rendered");
         return (
             <div className="container">
                 <form onSubmit={this.handleSubmit}>
@@ -65,4 +66,12 @@ class UpdateTask extends React.Component{
     }
 }
 
-export default UpdateTask;
+//export default UpdateTask;
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateTask: (task) => dispatch(updateTask(task))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(UpdateTask);

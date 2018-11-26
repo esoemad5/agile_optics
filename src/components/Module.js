@@ -5,7 +5,6 @@ import { compose } from 'redux';
 
 import TaskSummary from './TaskSummary';
 import CreateTask from './CreateTask';
-import { sorting } from '../utilities/helperFunctions';
 
 const renderTasks = (moduleProps) => {
     if (!moduleProps.Tasks) { // check for no modules in database
