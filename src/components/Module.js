@@ -4,9 +4,8 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 
 import TaskSummary from './TaskSummary';
-import CreateTask from './CreateTask';
 
-import AccordionTest from '../utilities/AccordionTest'
+import CreateTaskAccordion from '../utilities/CreateTaskAccordion'
 
 const renderTasks = (moduleProps) => {
     if (!moduleProps.Tasks) { // check for no modules in database
@@ -45,7 +44,7 @@ const Module = (props) => {
             <div>
                 {renderTasks(props)}
             </div>
-            <AccordionTest moduleId={props.module.id} />
+            <CreateTaskAccordion moduleId={props.module.id} />
         </div>
     );
 }

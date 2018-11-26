@@ -3,7 +3,7 @@ import { Accordion, Icon } from 'semantic-ui-react'
 
 import CreateTask from '../components/CreateTask';
 
-export default class AccordionExampleStandard extends Component {
+export default class CreateTaskAccordion extends Component {
   state = { activeIndex: 1 }
 
   handleClick = (e, titleProps) => {
