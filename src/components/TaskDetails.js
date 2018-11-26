@@ -3,11 +3,14 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import UpdateTask from './UpdateTask';
+import { Link } from 'react-router-dom'
 
 class TaskDetails extends React.Component {
     state = {
         updateFormIsVisible: false,
     };
+
+    
     
     renderUpdateForm = () => {
         this.setState({ updateFormIsVisible: true });
@@ -21,7 +24,7 @@ class TaskDetails extends React.Component {
     }
 
     renderUserThumbnails = () => {
-        var assignedUsersThumbnailArr = []
+        var assignedUsersThumbnailArr = [];
         this.props.Users.filter(user => {
             if (user.assignedTaskIds.includes(this.props.selectedTask.id)) {
                 assignedUsersThumbnailArr.push({pic: user.thumbnailPic, id: user.id, name: user.name});
@@ -40,6 +43,15 @@ class TaskDetails extends React.Component {
     }
 
     renderDetails = () => {
+        var assignedUsers = [];
+        if (this.props.Users) {
+            assignedUsers = this.props.Users.filter(user => {
+                if (user.assignedTaskIds.includes(this.props.selectedTask.id)) {
+                    return true;
+                }
+            });
+        }
+        console.log(assignedUsers);
         const selectedTask = this.props.selectedTask;
         return (
             <div>
@@ -60,7 +72,6 @@ class TaskDetails extends React.Component {
         )
     }
 
-    
     render() {
         console.log("TaskDetails state, props", this.state, this.props);
         const selectedTask = this.props.selectedTask;
@@ -74,7 +85,7 @@ class TaskDetails extends React.Component {
         return (
             <div className="ui raised very padded text container segment">
                 {this.state.updateFormIsVisible ?
-                    <div><button className="ui button" onClick={this.unrenderUpdateForm}>Return</button><UpdateTask task={this.props.selectedTask} /> </div>:
+                    <div><UpdateTask task={this.props.selectedTask} callback={this.unrenderUpdateForm} /> </div>:
                     this.renderDetails()
                 }
             </div>

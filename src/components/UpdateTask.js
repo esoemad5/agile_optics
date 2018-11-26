@@ -11,6 +11,7 @@ class UpdateTask extends React.Component{
     handleSubmit = (e) => {
         e.preventDefault();
         console.clear();
+        this.props.callback();
         console.log(this.state);
     }
     handleChange = (e) => {

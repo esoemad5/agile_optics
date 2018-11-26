@@ -38,7 +38,7 @@ export default combineReducers({
     projectState: createTaskOnModuleReducer,
     selectedTask: selectedTaskReducer,
     updateTask: updateTaskReducer,
-    firestore: firestoreReducer
+    firestore: firestoreReducer,
 });
 
 /* dummy data
