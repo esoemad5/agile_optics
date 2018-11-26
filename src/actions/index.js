@@ -31,8 +31,41 @@ export const updateTask = (task) => {
     })
 }
 
-export const joinTask = (task, userId) => {
-    console.log("in joinTask 1", task, userId);
+export const joinTask = (taskId, userId) => {
+    return ((dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('Users').doc(userId).get().then((response) => {
+            var userIsAlreadyAssignedToTask = false;
+            response.data().assignedTaskIds.forEach(task => {
+                if (task === taskId) {
+                    userIsAlreadyAssignedToTask = true;
+                    return;
+                }
+            });
+            if (!userIsAlreadyAssignedToTask) {
+                firestore.collection('Users').doc(userId).update({
+                    assignedTaskIds: [...response.data().assignedTaskIds, taskId]
+                })
+                    .then(
+                        //Task has been added to user's list
+                    )
+                    .catch((error) => {
+                        console.log("Error when adding task to user's list: ", error)
+                    });
+            }
+        });
+        // firestore.collection('Users').doc(userId)
+        //     .update({
+        //     assignedTaskIds: [...firestore.collection('Users').doc(userId).get().assignedTaskIds, taskId]
+        //     })
+        //     .then(() => {
+        //         console.log("joinTask has been run");
+        //     })
+        //     .catch((error) => {
+        //         console.log("joinTask has caught an error", error);
+        // })
+        
+    })
 }
 
 export const createTaskOnModule = (task, moduleId) => {

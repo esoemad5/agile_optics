@@ -66,8 +66,6 @@ class UpdateTask extends React.Component{
     }
 }
 
-//export default UpdateTask;
-
 const mapDispatchToProps = (dispatch) => {
     return {
         updateTask: (task) => dispatch(updateTask(task))

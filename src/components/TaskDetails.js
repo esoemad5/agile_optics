@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import UpdateTask from './UpdateTask';
+import { joinTask } from '../actions'
 
 class TaskDetails extends React.Component {
     state = {
@@ -19,7 +20,7 @@ class TaskDetails extends React.Component {
     }
 
     joinTask = () => {
-        console.log("joinTask");
+        this.props.joinTask(this.props.selectedTask.id, "JtIMCeohuh6i6xkSYLwv"); // dummy user id, should be obtained from state in the future
     }
 
     renderUserThumbnails = () => {
@@ -104,8 +105,14 @@ const mapStateToProps = (state) => {
     }
 };
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        joinTask: (task, userId) => dispatch(joinTask(task, userId))
+    }
+}
+
 export default compose(
-    connect(mapStateToProps),
+    connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect([
         {collection: 'Users'},
     ])
