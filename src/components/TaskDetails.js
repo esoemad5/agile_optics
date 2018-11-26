@@ -20,6 +20,25 @@ class TaskDetails extends React.Component {
         console.log("joinTask");
     }
 
+    renderUserThumbnails = () => {
+        var assignedUsersThumbnailArr = []
+        this.props.Users.filter(user => {
+            if (user.assignedTaskIds.includes(this.props.selectedTask.id)) {
+                assignedUsersThumbnailArr.push({pic: user.thumbnailPic, id: user.id, name: user.name});
+            }
+        });
+        
+        return(
+            <div>
+                {assignedUsersThumbnailArr.map(pic => {
+                    return (
+                        <img src={pic.pic} key={pic.id} height="20px" title={pic.name}></img>
+                    )
+                })}
+            </div>
+        )
+    }
+
     renderDetails = () => {
         const selectedTask = this.props.selectedTask;
         return (
@@ -27,7 +46,7 @@ class TaskDetails extends React.Component {
                 <h1 className="ui segment center aligned">
                     {selectedTask.name}
                     <br />
-                    <img className="right floated column" src="https://randomuser.me/api/portraits/thumb/men/65.jpg" height="15px"></img>
+                    {this.renderUserThumbnails()}
                 </h1>
                 <div className="ui six column grid">
                     <div className="left floated column"><button className="ui button allign-right" onClick={this.joinTask}>Join</button></div>
