@@ -1,6 +1,6 @@
 import React from 'react';
 
-class CommentSection extends React.Component {
+class Comments extends React.Component {
     render() {
         return (
             <div className="ui raised very padded text container segment fluid">
