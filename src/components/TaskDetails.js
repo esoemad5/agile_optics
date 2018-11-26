@@ -2,16 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+
 import UpdateTask from './UpdateTask';
-import { joinTask } from '../actions'
+import { joinTask } from '../actions';
+import Comments from './Comments';
 
 class TaskDetails extends React.Component {
     state = {
         updateFormIsVisible: false,
     };
 
-    
-    
     renderUpdateForm = () => {
         this.setState({ updateFormIsVisible: true });
     }
@@ -72,6 +72,7 @@ class TaskDetails extends React.Component {
                 
                 <i><b>Status: {selectedTask.status}<br />Priority: {selectedTask.priority}</b></i>
                 <p>{selectedTask.details}</p>
+                <Comments />
             </div>
         )
     }

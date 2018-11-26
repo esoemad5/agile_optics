@@ -75,6 +75,7 @@ export const createTaskOnModule = (task, moduleId) => {
             .add({
                 ...task,
                 moduleId: moduleId,
+                comments: [],
             })
         
         /* we dont need to use the reducer

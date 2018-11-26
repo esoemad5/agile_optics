@@ -50,7 +50,8 @@
       var dbRef = firebase.database().ref().child('text');
       dbRef.on('value', snap => firebase_RealtimeDatabase.innerText = snap.val());
     </script> -->
-
+    <script src="js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="js/accordion.js"></script>
     <div id="root"></div>
     <!--
       This HTML file is a template.

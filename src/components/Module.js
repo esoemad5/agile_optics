@@ -6,6 +6,8 @@ import { compose } from 'redux';
 import TaskSummary from './TaskSummary';
 import CreateTask from './CreateTask';
 
+import AccordionTest from '../utilities/AccordionTest'
+
 const renderTasks = (moduleProps) => {
     if (!moduleProps.Tasks) { // check for no modules in database
         return;
@@ -43,7 +45,7 @@ const Module = (props) => {
             <div>
                 {renderTasks(props)}
             </div>
-            <CreateTask moduleId={props.module.id}/>
+            <AccordionTest moduleId={props.module.id} />
         </div>
     );
 }
