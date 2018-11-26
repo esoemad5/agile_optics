@@ -14,7 +14,7 @@ class UpdateTask extends React.Component{
         e.preventDefault();
         this.props.callback();
         console.log(this.state);
-        updateTask(this.state);
+        this.props.updateTask(this.state);
     }
     handleChange = (e) => {
         this.setState({
