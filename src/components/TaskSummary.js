@@ -26,19 +26,19 @@ const TaskSummary = (props) => {
     const getColor = (status) => {
         var output = "ui button ";
         switch (status) {
-            case 0:
+            case "Stuck":
                 output += "red";
                 break;
-            case 1:
+            case "In Progress":
                 output += "yellow";
                 break;
-            case 2:
+            case "Awaiting Review":
                 output += "blue";
                 break;
-            case 3:
+            case "Not Started":
                 output += "grey";
                 break;
-            case 4:
+            case "Completed":
                 output += "green";
                 break;
             default:

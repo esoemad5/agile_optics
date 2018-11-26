@@ -21,7 +21,8 @@ const renderTasks = (moduleProps) => {
         return false;
     });
 
-    tasks = sorting(tasks, "status");
+    // UNUSED SORT FUNCTION
+    //tasks = sorting(tasks, "status");
 
     return (
         <div>
