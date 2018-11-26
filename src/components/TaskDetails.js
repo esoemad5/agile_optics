@@ -99,7 +99,7 @@ class TaskDetails extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        selectedTask: state.selectedTask,
+        selectedTask: state.selectedTask, // the task details are stored in props that dont get updated with the database.
         Users: state.firestore.ordered.Users,
     }
 };
