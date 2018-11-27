@@ -35,13 +35,15 @@ class Comments extends React.Component {
                 {this.props.comments.map((comment, index) => {
                     var imgAlt = comment.authorName + "'s picture";
                     var date = comment.datePosted.toDate();
+
+                    const styles = {
+                        fontSize: "8pt",
+                    }
                     return (
-                        <div className="ui raised very padded text container segment fluid" key={index}>
-                            <img src={comment.authorPicture} height="40px" alt={imgAlt} title={comment.authorName}></img>
-                            <p>{comment.comment}</p>
-                            <p>{comment.authorName}</p>
-                            <p>{date.getMonth()}/{date.getDate()}/{date.getFullYear()}</p>
-                            <p>{date.getHours()}:{date.getMinutes()}</p>
+                        <div className="ui raised text container segment fluid" key={index}>
+                            <img src={comment.authorPicture} height="20px" alt={imgAlt} title={comment.authorName}></img>
+                            <p>{comment.comment}
+                            <br /><span style={styles}>{date.getMonth()}/{date.getDate()}/{date.getFullYear()}, {date.getHours()}:{date.getMinutes()}</span></p>
                         </div>
                     )
                 })}
@@ -73,6 +75,7 @@ class Comments extends React.Component {
     render() {
         return (
             <div className="ui raised very padded text container segment fluid">
+                <h2 className="ui segment center aligned">Comments</h2>
                 {this.renderComments()}
                 <br />
                 {this.writeNewCommentForm()}
