@@ -45,9 +45,6 @@ const Module = (props) => {
     }
     return (
         <div className="ui raised very padded text container segment fluid">
-            <div className="ui five column grid">
-                <div className="right floated column"><button onClick={del} className="ui button red">Delete module</button></div>
-            </div>
             <div className="ui segment">
                 <center><h4>{props.module.name}</h4></center>
             </div>
@@ -56,7 +53,9 @@ const Module = (props) => {
             </div>
             <CreateTaskAccordion moduleId={props.module.id} />
             <br />
-            
+            <div className="ui five column grid">
+                <div className="right floated column"><button onClick={del} className="ui button red">Delete module</button></div>
+            </div>
         </div>
     );
 }

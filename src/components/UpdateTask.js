@@ -28,11 +28,6 @@ class UpdateTask extends React.Component{
         return (
             <div className="container">
                 <form onSubmit={this.handleSubmit}>
-                    <button
-                        className="ui button"
-                        onClick={this.handleSubmit}>
-                        Submit
-                    </button>
                     <h1 className="ui segment center aligned">
                         <input
                             type='text'
@@ -60,12 +55,18 @@ class UpdateTask extends React.Component{
                     <textarea
                         type='text'
                         id='details'
-                        value={this.props.task.details}
+                        value={this.state.details}
                         onChange={this.handleChange}
                     />
                 </form>
                 <br/><br/>
-                <button onClick={this.handleDelete} className="ui button red">Delete</button>
+                <button
+                    className="ui button"
+                    onClick={this.handleSubmit}>
+                    Submit
+                </button>
+                <br /><br /><span>Be careful! Deletion cannot be undone! </span>
+                <button onClick={this.handleDelete} className="ui button red">Delete Task</button>
             </div>
         );
     }
