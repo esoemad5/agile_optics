@@ -125,11 +125,25 @@ export const deleteTask = (taskId) => {
             moduleId: "",
         })
             .then(
-                console.log("Task will be deleted", taskId)
             // Task still exists in database, just removed from the module
             )
             .catch((error) => {
             console.log("Error deleting task: ", error)
+        })
+    })
+}
+
+export const deleteModule = (moduleId) => {
+    return ((dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('Modules').doc(moduleId).update({
+            projectId: "",
+        })
+            .then(
+            // Module still exists in database, just removed from the project
+            )
+            .catch((error) => {
+            console.log("Error deleting Module: ", error)
         })
     })
 }

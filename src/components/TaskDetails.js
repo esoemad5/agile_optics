@@ -9,18 +9,6 @@ import { joinTask } from '../actions';
 import Comments from './Comments';
 
 class TaskDetails extends React.Component {
-
-    // componentDidUpdate() {
-    //     if (this.props.Tasks && this.props.selectedTask) {
-    //         console.log("Running thing");
-    //         this.props.selectedTask = this.props.Tasks.filter((task) => {
-    //             if (task.id === this.props.selectedTask.id) {
-    //                 return true;
-    //             }
-    //             return false;
-    //         })
-    //     }
-    // }
     state = {
         updateFormIsVisible: false,
     };
@@ -28,6 +16,7 @@ class TaskDetails extends React.Component {
     renderUpdateForm = () => {
         this.setState({ updateFormIsVisible: true });
     }
+
     unrenderUpdateForm = () => {
         this.setState({ updateFormIsVisible: false });
     }
@@ -37,7 +26,6 @@ class TaskDetails extends React.Component {
     }
 
     renderUserThumbnails = () => {
-        //var assignedUsersThumbnailArr = [];
         var assignedUsersThumbnailArr = this.props.Users.map(user => {
             if (user.assignedTaskIds.includes(this.props.selectedTask.id)) {
                 return({ pic: user.thumbnailPic, id: user.id, name: user.name });
@@ -111,6 +99,8 @@ class TaskDetails extends React.Component {
     
 }
 
+
+
 const mapStateToProps = (state) => {
     function querrySelectedTask() {
         if (state.firestore.ordered.Tasks && state.selectedTask) {
@@ -121,9 +111,9 @@ const mapStateToProps = (state) => {
         
         return null
     }
-    //console.log(state);
+
     return {
-        selectedTask: querrySelectedTask(), // the task details are stored in props that dont get updated with the database.
+        selectedTask: querrySelectedTask(),
         Users: state.firestore.ordered.Users,
         Tasks: state.firestore.ordered.Tasks,
     }

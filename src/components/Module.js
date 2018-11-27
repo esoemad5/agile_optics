@@ -5,6 +5,7 @@ import { compose } from 'redux';
 
 import TaskSummary from './TaskSummary';
 import CreateTaskAccordion from '../utilities/CreateTaskAccordion'
+import { deleteModule } from '../actions'
 
 const renderTasks = (moduleProps) => {
     if (!moduleProps.Tasks) { // check for no modules in database
@@ -36,14 +37,26 @@ const renderTasks = (moduleProps) => {
     );
 }
 
+
+
 const Module = (props) => {
+    const del = () => {
+        props.deleteModule(props.module.id);
+    }
     return (
         <div className="ui raised very padded text container segment fluid">
-            <h2 className="ui segment center aligned">{props.module.name}</h2>
+            <div className="ui five column grid">
+                <div className="right floated column"><button onClick={del} className="ui button red">Delete module</button></div>
+            </div>
+            <div className="ui segment">
+                <center><h4>{props.module.name}</h4></center>
+            </div>
             <div>
                 {renderTasks(props)}
             </div>
             <CreateTaskAccordion moduleId={props.module.id} />
+            <br />
+            
         </div>
     );
 }
@@ -57,8 +70,14 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteModule: (moduleId) => dispatch(deleteModule(moduleId)),
+    }
+}
+
 export default compose(
-    connect(mapStateToProps),
+    connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect([
         {collection: 'Tasks'},
     ])

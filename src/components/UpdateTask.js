@@ -21,6 +21,7 @@ class UpdateTask extends React.Component{
         })
     }
     handleDelete = () => {
+        this.props.callback();
         this.props.deleteTask(this.props.task.id)
     }
     render() {
