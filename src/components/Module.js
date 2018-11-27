@@ -4,7 +4,6 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 
 import TaskSummary from './TaskSummary';
-
 import CreateTaskAccordion from '../utilities/CreateTaskAccordion'
 
 const renderTasks = (moduleProps) => {

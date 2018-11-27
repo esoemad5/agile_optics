@@ -6,6 +6,13 @@ export const selectTask = (task) => {
     };
 };
 
+export const addComment = (taskId, commentData) => {
+    return ((dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+        //D firestsore stuff here
+    });
+}
+
 export const updateTask = (task) => {
     return ((dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
@@ -17,7 +24,6 @@ export const updateTask = (task) => {
             details: task.details,
             })
             .then( () =>{
-                console.log("updateTask has been run")
                 dispatch({
                     type: 'TASK_SELECTED',
                     payload: task,

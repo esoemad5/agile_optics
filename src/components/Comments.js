@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+
+import { addComment } from '../actions'
 
 class Comments extends React.Component {
     state = {
@@ -15,6 +19,23 @@ class Comments extends React.Component {
         this.setState({
             commentEditor: e.target.value
         })
+    }
+
+    renderComments = () => {
+        console.log(this.props.comments);
+        return (
+            <div>
+                <p>startComments</p>
+                {this.props.comments.forEach(comment => {
+                    console.log("in loop")
+                    return (
+                        <p>comment</p>
+                    )
+                })}
+                <p>endComments</p>
+            </div>
+        );
+        
     }
 
     writeNewCommentForm = () => {
@@ -35,14 +56,30 @@ class Comments extends React.Component {
             </form>
         );
     }
+
+
     render() {
         return (
             <div className="ui raised very padded text container segment fluid">
-                <p>render comments</p>
+                {this.renderComments()}
                 {this.writeNewCommentForm()}
             </div>
         );
     }
 }
 
-export default (Comments)
+const mapStateToProps = (state) => {
+    return {
+        comments: state.selectedTask.comments
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addComment: (taskId, commentData) => dispatch(addComment(taskId, commentData)),
+    }
+}
+
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+)(Comments);
