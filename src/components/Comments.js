@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { firestore } from 'firebase/app'
+import { firestoreConnect } from 'react-redux-firebase';
 
 import { addComment } from '../actions'
 
@@ -10,7 +12,13 @@ class Comments extends React.Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        var commentData = {
+            authorName: "Test User",
+            authorPicture: "https://randomuser.me/api/portraits/men/65.jpg",
+            comment: this.state.commentEditor,
+            datePosted: firestore.Timestamp.fromDate(new Date()),
+        }
+        this.props.addComment(this.props.taskId, commentData, this.props.comments)
         this.setState({
             commentEditor: "",
         })
@@ -22,17 +30,21 @@ class Comments extends React.Component {
     }
 
     renderComments = () => {
-        console.log(this.props.comments);
         return (
             <div>
-                <p>startComments</p>
-                {this.props.comments.forEach(comment => {
-                    console.log("in loop")
+                {this.props.comments.map((comment, index) => {
+                    var imgAlt = comment.authorName + "'s picture";
+                    var date = comment.datePosted.toDate();
                     return (
-                        <p>comment</p>
+                        <div className="ui raised very padded text container segment fluid" key={index}>
+                            <img src={comment.authorPicture} height="40px" alt={imgAlt} title={comment.authorName}></img>
+                            <p>{comment.comment}</p>
+                            <p>{comment.authorName}</p>
+                            <p>{date.getMonth()}/{date.getDate()}/{date.getFullYear()}</p>
+                            <p>{date.getHours()}:{date.getMinutes()}</p>
+                        </div>
                     )
                 })}
-                <p>endComments</p>
             </div>
         );
         
@@ -62,6 +74,7 @@ class Comments extends React.Component {
         return (
             <div className="ui raised very padded text container segment fluid">
                 {this.renderComments()}
+                <br />
                 {this.writeNewCommentForm()}
             </div>
         );
@@ -70,16 +83,20 @@ class Comments extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        comments: state.selectedTask.comments
+        comments: state.selectedTask.comments,
+        // tasks: state.firestore.ordered.Tasks
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addComment: (taskId, commentData) => dispatch(addComment(taskId, commentData)),
+        addComment: (taskId, commentData, currentCommentArray) => dispatch(addComment(taskId, commentData, currentCommentArray)),
     }
 }
 
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
+    // firestoreConnect([
+    //     {collection: 'Tasks'},
+    // ])
 )(Comments);

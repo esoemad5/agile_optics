@@ -72,7 +72,7 @@ class TaskDetails extends React.Component {
                 
                 <i><b>Status: {selectedTask.status}<br />Priority: {selectedTask.priority}</b></i>
                 <p>{selectedTask.details}</p>
-                <Comments />
+                <Comments taskId={this.props.selectedTask.id} />
             </div>
         )
     }

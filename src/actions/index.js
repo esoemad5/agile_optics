@@ -6,10 +6,23 @@ export const selectTask = (task) => {
     };
 };
 
-export const addComment = (taskId, commentData) => {
+export const addComment = (taskId, commentData, currentCommentArray) => {
+    console.log("addComment invoked with parameters: ", taskId, commentData, currentCommentArray);
+    const newCommentArray = [
+        ...currentCommentArray,
+        commentData
+    ]
     return ((dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
-        //D firestsore stuff here
+        firestore.collection('Tasks').doc(taskId).update({
+            comments: newCommentArray
+        })
+            .then(
+                console.log("Comment added successfully!")
+            )
+            .catch((error) => {
+                console.log("Error adding a comment: ", error)
+            })
     });
 }
 
