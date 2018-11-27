@@ -38,22 +38,26 @@ const renderModules = (projectProps) => {
     );
 }
 
-const Project = (props) => {
-    const newModule = () => {
-        console.log(props.projectIdInDatabase);
+class Project extends React.Component{
+    newModule = () => {
+        console.log(this.props.projectIdInDatabase);
     }
-    return (
-        <div>
-            <div className="ui raised very padded text container segment">
-                <div className="ui five column grid">
-                    <div className="right floated column"><button onClick={newModule} className="ui button blue">Create module</button></div>
+
+    render = () => {
+        return (
+            <div>
+                <div className="ui raised very padded text container segment">
+                    <div className="ui five column grid">
+                        <div className="right floated column"><button onClick={this.newModule} className="ui button blue">Create module</button></div>
+                    </div>
+                    <h2 className="ui segment center aligned">{this.props.name}</h2>
+                    {renderModules(this.props)}
                 </div>
-                <h2 className="ui segment center aligned">{props.name}</h2>
-                {renderModules(props)}
             </div>
-        </div>
-    )
+        )
+    }
 }
+
 
 const mapStateToProps = (state) => {
     // return state.projectState // Uncomment this line to switch to dummy data.
