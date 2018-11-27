@@ -7,7 +7,6 @@ export const selectTask = (task) => {
 };
 
 export const addComment = (taskId, commentData, currentCommentArray) => {
-    console.log("addComment invoked with parameters: ", taskId, commentData, currentCommentArray);
     const newCommentArray = [
         ...currentCommentArray,
         commentData
@@ -18,7 +17,7 @@ export const addComment = (taskId, commentData, currentCommentArray) => {
             comments: newCommentArray
         })
             .then(
-                console.log("Comment added successfully!")
+                // Comment has been added
             )
             .catch((error) => {
                 console.log("Error adding a comment: ", error)
@@ -117,6 +116,22 @@ export const createTaskOnModule = (task, moduleId) => {
         )
         */
     }  
+}
+
+export const deleteTask = (taskId) => {
+    return ((dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('Tasks').doc(taskId).update({
+            moduleId: "",
+        })
+            .then(
+                console.log("Task will be deleted", taskId)
+            // Task still exists in database, just removed from the module
+            )
+            .catch((error) => {
+            console.log("Error deleting task: ", error)
+        })
+    })
 }
 
 export const testActionCreator = (parameter) => {

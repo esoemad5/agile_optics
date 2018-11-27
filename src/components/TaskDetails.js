@@ -5,6 +5,7 @@ import { compose } from 'redux';
 
 import UpdateTask from './UpdateTask';
 import { joinTask } from '../actions';
+
 import Comments from './Comments';
 
 class TaskDetails extends React.Component {
@@ -112,7 +113,6 @@ class TaskDetails extends React.Component {
 
 const mapStateToProps = (state) => {
     function querrySelectedTask() {
-        console.log(state.firestore.ordered.Tasks, state.selectedTask)
         if (state.firestore.ordered.Tasks && state.selectedTask) {
             return state.firestore.ordered.Tasks.filter((task) => {
                 return (task.id === state.selectedTask.id ? true : false);
@@ -131,7 +131,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        joinTask: (task, userId) => dispatch(joinTask(task, userId))
+        joinTask: (task, userId) => dispatch(joinTask(task, userId)),
     }
 }
 

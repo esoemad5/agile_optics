@@ -10,6 +10,7 @@ class Comments extends React.Component {
     state = {
         commentEditor: "",
     }
+    
     handleSubmit = (e) => {
         e.preventDefault();
         var commentData = {
@@ -23,6 +24,7 @@ class Comments extends React.Component {
             commentEditor: "",
         })
     }
+
     handleChange = (e) => {
         this.setState({
             commentEditor: e.target.value
@@ -49,7 +51,6 @@ class Comments extends React.Component {
                 })}
             </div>
         );
-        
     }
 
     writeNewCommentForm = () => {
@@ -70,7 +71,6 @@ class Comments extends React.Component {
             </form>
         );
     }
-
 
     render() {
         return (

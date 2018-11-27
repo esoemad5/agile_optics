@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateTask } from '../actions/index';
+import { updateTask, deleteTask } from '../actions/index';
 
 /*
  * 0: Stuck; 1: In Progress; 2: Awaiting Review; 3: Not Started; 4: Completed
@@ -19,6 +19,9 @@ class UpdateTask extends React.Component{
         this.setState({
             [e.target.id]: e.target.value
         })
+    }
+    handleDelete = () => {
+        this.props.deleteTask(this.props.task.id)
     }
     render() {
         return (
@@ -60,6 +63,8 @@ class UpdateTask extends React.Component{
                         onChange={this.handleChange}
                     />
                 </form>
+                <br/><br/>
+                <button onClick={this.handleDelete} className="ui button red">Delete</button>
             </div>
         );
     }
@@ -67,7 +72,8 @@ class UpdateTask extends React.Component{
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateTask: (task) => dispatch(updateTask(task))
+        updateTask: (task) => dispatch(updateTask(task)),
+        deleteTask: (taskId) => dispatch(deleteTask(taskId)),
     }
 }
 
