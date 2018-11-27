@@ -148,6 +148,13 @@ export const deleteModule = (moduleId) => {
     })
 }
 
+export const createModule = (projectId) => {
+    return ((dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+        // make a new module here
+    })
+}
+
 export const testActionCreator = (parameter) => {
     return (dispatch, getState, {getFirebase, getFirestore}) => {
         // make async call to database
