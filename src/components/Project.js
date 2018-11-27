@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import { createModule } from '../actions'
 
 import Module from './Module'
 
@@ -39,6 +40,18 @@ const renderModules = (projectProps) => {
 }
 
 class Project extends React.Component{
+    state = {
+        newModuleName: "",
+    }
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.createModule(this.props.projectIdInDatabase, this.state.newModuleName)
+    }
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    }
     newModule = () => {
         console.log(this.props.projectIdInDatabase);
     }
@@ -47,10 +60,20 @@ class Project extends React.Component{
         return (
             <div>
                 <div className="ui raised very padded text container segment">
-                    <div className="ui five column grid">
-                        <div className="right floated column"><button onClick={this.newModule} className="ui button blue">Create module</button></div>
-                    </div>
                     <h2 className="ui segment center aligned">{this.props.name}</h2>
+
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="ui raised segment four column grid">
+                            <span className="right floated column">Name: <input
+                                type='text'
+                                id='newModuleName'
+                                value={this.state.newModuleName}
+                                onChange={this.handleChange}
+                                /></span>
+                        
+                            <span className="right floated column"><button className="ui button blue">Create module</button></span>
+                        </div>
+                    </form>
                     {renderModules(this.props)}
                 </div>
             </div>
@@ -67,8 +90,14 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createModule: (projectId, moduleName) => dispatch(createModule(projectId, moduleName)),
+    }
+}
+
 export default compose(
-    connect(mapStateToProps),
+    connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect([
         {collection: 'Modules'},
     ])

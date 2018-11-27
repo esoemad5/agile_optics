@@ -148,10 +148,15 @@ export const deleteModule = (moduleId) => {
     })
 }
 
-export const createModule = (projectId) => {
+export const createModule = (projectId, moduleName) => {
+    console.log(projectId, moduleName);
     return ((dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
-        // make a new module here
+        firestore.collection('Modules')
+            .add({
+                projectId: projectId,
+                name: moduleName,
+        })
     })
 }
 
