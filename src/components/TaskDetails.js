@@ -8,6 +8,18 @@ import { joinTask } from '../actions';
 import Comments from './Comments';
 
 class TaskDetails extends React.Component {
+
+    // componentDidUpdate() {
+    //     if (this.props.Tasks && this.props.selectedTask) {
+    //         console.log("Running thing");
+    //         this.props.selectedTask = this.props.Tasks.filter((task) => {
+    //             if (task.id === this.props.selectedTask.id) {
+    //                 return true;
+    //             }
+    //             return false;
+    //         })
+    //     }
+    // }
     state = {
         updateFormIsVisible: false,
     };
@@ -78,7 +90,6 @@ class TaskDetails extends React.Component {
     }
 
     render() {
-        //console.log("TaskDetails state, props", this.state, this.props);
         const selectedTask = this.props.selectedTask;
         if (!selectedTask) {
             return (
@@ -100,9 +111,21 @@ class TaskDetails extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    function querrySelectedTask() {
+        console.log(state.firestore.ordered.Tasks, state.selectedTask)
+        if (state.firestore.ordered.Tasks && state.selectedTask) {
+            return state.firestore.ordered.Tasks.filter((task) => {
+                return (task.id === state.selectedTask.id ? true : false);
+            })[0]
+        }
+        
+        return null
+    }
+    //console.log(state);
     return {
-        selectedTask: state.selectedTask, // the task details are stored in props that dont get updated with the database.
+        selectedTask: querrySelectedTask(), // the task details are stored in props that dont get updated with the database.
         Users: state.firestore.ordered.Users,
+        Tasks: state.firestore.ordered.Tasks,
     }
 };
 
@@ -115,6 +138,7 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect([
-        {collection: 'Users'},
+        { collection: 'Users' },
+        { collection: 'Tasks' },
     ])
 )(TaskDetails);
